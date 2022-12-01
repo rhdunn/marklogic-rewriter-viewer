@@ -17,6 +17,17 @@ declare function local:load-modules-file($file-path) {
     return xdmp:invoke-function(function () { fn:doc($file-path) }, $options)
 };
 
+declare function local:methods($endpoint as element()) as xs:string* {
+  fn:tokenize(($endpoint/ancestor::r:match-method)[1]/@any-of/string(), "\s+")
+};
+
+declare function local:path-uris($path as element(r:match-path)) as xs:string* {
+  if ($path/@matches) then $path/@matches
+  else if ($path/@any-of) then fn:tokenize($path/@any-of, "\s+")
+  else if ($path/@prefix) then $path/@prefix
+  else ()
+};
+
 declare variable $module-path as xs:string? :=
   try { fn:error(xs:QName("__FILE__"), "") }
   catch($ex) { $ex/error:stack/error:frame[2]/error:uri };
@@ -46,6 +57,19 @@ xdmp:set-response-content-type("text/html"),
         (),
       $rewriter/dc:description/*,
       $rewriter/dc:rights ! <div class="rights">{./text()}</div>
-    }</section>
+    }</section>,
+    for $endpoint in $rewriter//r:dispatch
+    let $path := ($endpoint/ancestor::r:match-path)[1]
+    for $uri in local:path-uris($path)
+    for $method in local:methods($endpoint)
+    order by $uri ascending, $method ascending
+    return <details class="endpoint endpoint-method-{fn:lower-case($method)}">
+      <summary>
+        <span class="endpoint-method">{$method}</span>
+        <span class="endpoint-uri">{$uri}</span>
+        <span class="endpoint-title">{$path/dc:title/text()}</span>
+      </summary>
+      <section class="description">{$path/dc:description/*}</section>
+    </details>
   }</body>
 </html>

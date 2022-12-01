@@ -15,7 +15,80 @@ h1 {
   background-color: lightskyblue;
 }
 
-section.description {
+/* documentation */
+
+body > section.description {
   max-width: 80%;
   margin: 0 auto 1rem auto;
 }
+
+/* endpoints */
+
+details.endpoint {
+  margin: 0 1rem 1rem 1rem;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+details.endpoint > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+details[open].endpoint > summary {
+  border-bottom: 1px solid black;
+}
+
+details.endpoint > * {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+span.endpoint-uri {
+  font-family: Consolas, monospace;
+}
+
+span.endpoint-title {
+  margin-left: 1rem;
+  font-size: 15px;
+  font-style: italic;
+}
+
+/* endpoint methods */
+
+span.endpoint-method {
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
+  border-radius: 4px;
+  padding: 4px;
+  margin-right: 0.5rem;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+}
+
+details.endpoint-method-delete  { border-color: #f93e3e; background-color: #f93e3e18; }
+details.endpoint-method-get     { border-color: #61affe; background-color: #61affe18; }
+details.endpoint-method-head    { border-color: #0d5aa7; background-color: #0d5aa718; }
+details.endpoint-method-options { border-color: #f93e3e; background-color: #f93e3e18; }
+details.endpoint-method-patch   { border-color: #50e3c2; background-color: #50e3c218; }
+details.endpoint-method-post    { border-color: #49cc90; background-color: #49cc9018; }
+details.endpoint-method-put     { border-color: #fca130; background-color: #fca13018; }
+
+details[open].endpoint-method-delete  > summary { border-color: #f93e3e; }
+details[open].endpoint-method-get     > summary { border-color: #61affe; }
+details[open].endpoint-method-head    > summary { border-color: #0d5aa7; }
+details[open].endpoint-method-options > summary { border-color: #f93e3e; }
+details[open].endpoint-method-patch   > summary { border-color: #50e3c2; }
+details[open].endpoint-method-post    > summary { border-color: #49cc90; }
+details[open].endpoint-method-put     > summary { border-color: #fca130; }
+
+details.endpoint-method-delete  span.endpoint-method { background-color: #f93e3e; }
+details.endpoint-method-get     span.endpoint-method { background-color: #61affe; }
+details.endpoint-method-head    span.endpoint-method { background-color: #0d5aa7; }
+details.endpoint-method-options span.endpoint-method { background-color: #f93e3e; }
+details.endpoint-method-patch   span.endpoint-method { background-color: #50e3c2; }
+details.endpoint-method-post    span.endpoint-method { background-color: #49cc90; }
+details.endpoint-method-put     span.endpoint-method { background-color: #fca130; }
