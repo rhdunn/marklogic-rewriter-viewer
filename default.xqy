@@ -28,6 +28,13 @@ declare function local:path-uris($path as element(r:match-path)) as xs:string* {
   else ()
 };
 
+declare function local:format-uri($uri as xs:string) as xs:string {
+  let $uri := fn:replace($uri, "^[^]", "")
+  let $uri := fn:replace($uri, "[$]$", "")
+  let $uri := fn:replace($uri, "/[?]$", "/")
+  return $uri
+};
+
 declare variable $module-path as xs:string? :=
   try { fn:error(xs:QName("__FILE__"), "") }
   catch($ex) { $ex/error:stack/error:frame[2]/error:uri };
@@ -61,6 +68,7 @@ xdmp:set-response-content-type("text/html"),
     for $endpoint in $rewriter//r:dispatch
     let $path := ($endpoint/ancestor::r:match-path)[1]
     for $uri in local:path-uris($path)
+    let $uri := local:format-uri($uri)
     for $method in local:methods($endpoint)
     order by $uri ascending, $method ascending
     return <details class="endpoint endpoint-method-{fn:lower-case($method)}">
