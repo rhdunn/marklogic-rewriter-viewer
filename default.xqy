@@ -77,7 +77,16 @@ xdmp:set-response-content-type("text/html"),
         <span class="endpoint-uri">{$uri}</span>
         <span class="endpoint-title">{$path/dc:title/text()}</span>
       </summary>
-      <section class="description">{$path/dc:description/*}</section>
+      <section>
+        <header>
+          <nav class="tabs">
+            <ol>
+              <li class="active">Description</li>
+            </ol>
+          </nav>
+        </header>
+        <section class="description">{$path/dc:description/*}</section>
+      </section>
     </details>
   }</body>
 </html>

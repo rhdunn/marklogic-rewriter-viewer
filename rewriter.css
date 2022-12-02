@@ -22,6 +22,27 @@ body > section.description {
   margin: 0 auto 1rem auto;
 }
 
+/* tab bar */
+
+nav.tabs {
+}
+
+nav.tabs > ol {
+  display: block;
+  list-style: none;
+  margin-top: 0;
+  padding: 8px 20px;
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+
+nav.tabs > ol > li {
+  font-weight: bold;
+  display: inline-block;
+  border-bottom: 3px solid transparent;
+  padding-bottom: 4px;
+}
+
 /* endpoints */
 
 details.endpoint {
@@ -40,7 +61,7 @@ details[open].endpoint > summary {
   border-bottom: 1px solid black;
 }
 
-details.endpoint > * {
+details.endpoint > section > section {
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -65,10 +86,9 @@ span.endpoint-method {
   padding: 4px;
   margin-right: 0.5rem;
   font-weight: bold;
-  background-color: black;
-  color: white;
 }
 
+details.endpoint                { border-color: #000000; background-color: #ffffffff; }
 details.endpoint-method-delete  { border-color: #f93e3e; background-color: #f93e3e18; }
 details.endpoint-method-get     { border-color: #61affe; background-color: #61affe18; }
 details.endpoint-method-head    { border-color: #0d5aa7; background-color: #0d5aa718; }
@@ -77,6 +97,7 @@ details.endpoint-method-patch   { border-color: #50e3c2; background-color: #50e3
 details.endpoint-method-post    { border-color: #49cc90; background-color: #49cc9018; }
 details.endpoint-method-put     { border-color: #fca130; background-color: #fca13018; }
 
+details[open].endpoint                > summary { border-color: #000000; }
 details[open].endpoint-method-delete  > summary { border-color: #f93e3e; }
 details[open].endpoint-method-get     > summary { border-color: #61affe; }
 details[open].endpoint-method-head    > summary { border-color: #0d5aa7; }
@@ -85,10 +106,29 @@ details[open].endpoint-method-patch   > summary { border-color: #50e3c2; }
 details[open].endpoint-method-post    > summary { border-color: #49cc90; }
 details[open].endpoint-method-put     > summary { border-color: #fca130; }
 
-details.endpoint-method-delete  span.endpoint-method { background-color: #f93e3e; }
-details.endpoint-method-get     span.endpoint-method { background-color: #61affe; }
-details.endpoint-method-head    span.endpoint-method { background-color: #0d5aa7; }
-details.endpoint-method-options span.endpoint-method { background-color: #f93e3e; }
-details.endpoint-method-patch   span.endpoint-method { background-color: #50e3c2; }
-details.endpoint-method-post    span.endpoint-method { background-color: #49cc90; }
-details.endpoint-method-put     span.endpoint-method { background-color: #fca130; }
+details.endpoint                span.endpoint-method { background-color: #000000; color: #ffffff; }
+details.endpoint-method-delete  span.endpoint-method { background-color: #f93e3e; color: #ffffff; }
+details.endpoint-method-get     span.endpoint-method { background-color: #61affe; color: #ffffff; }
+details.endpoint-method-head    span.endpoint-method { background-color: #0d5aa7; color: #ffffff; }
+details.endpoint-method-options span.endpoint-method { background-color: #f93e3e; color: #ffffff; }
+details.endpoint-method-patch   span.endpoint-method { background-color: #50e3c2; color: #ffffff; }
+details.endpoint-method-post    span.endpoint-method { background-color: #49cc90; color: #ffffff; }
+details.endpoint-method-put     span.endpoint-method { background-color: #fca130; color: #ffffff; }
+
+details.endpoint                nav.tabs > ol { border-color: #000000; }
+details.endpoint-method-delete  nav.tabs > ol { border-color: #f93e3e; }
+details.endpoint-method-get     nav.tabs > ol { border-color: #61affe; }
+details.endpoint-method-head    nav.tabs > ol { border-color: #0d5aa7; }
+details.endpoint-method-options nav.tabs > ol { border-color: #f93e3e; }
+details.endpoint-method-patch   nav.tabs > ol { border-color: #50e3c2; }
+details.endpoint-method-post    nav.tabs > ol { border-color: #49cc90; }
+details.endpoint-method-put     nav.tabs > ol { border-color: #fca130; }
+
+details.endpoint                nav.tabs > ol > li.active { border-color: #000000; }
+details.endpoint-method-delete  nav.tabs > ol > li.active { border-color: #f93e3e; }
+details.endpoint-method-get     nav.tabs > ol > li.active { border-color: #61affe; }
+details.endpoint-method-head    nav.tabs > ol > li.active { border-color: #0d5aa7; }
+details.endpoint-method-options nav.tabs > ol > li.active { border-color: #f93e3e; }
+details.endpoint-method-patch   nav.tabs > ol > li.active { border-color: #50e3c2; }
+details.endpoint-method-post    nav.tabs > ol > li.active { border-color: #49cc90; }
+details.endpoint-method-put     nav.tabs > ol > li.active { border-color: #fca130; }
